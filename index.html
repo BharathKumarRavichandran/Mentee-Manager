@@ -13,30 +13,28 @@
 <button id="addButton" onclick="addBox();">Add a Mentee</button>
 <div id="menteeRegionInput">
 	<div id="mBoxInputId" class="mBoxInput">
-	<input id="nameId" type="text" name="name" value="Mentee's Name" onfocus="this.value='';">
-	<div class="star">Rating :
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-	</div>
-	<input class="mComment" type="text" name="comment" value="Write a comment.." onfocus="this.value='';">
-	<div><input type="submit" name="submit"></div>
+	<input required id="nameId" type="text" name="name" value="Mentee's Name" onfocus="this.value='';">
+	<div class="star">Rating :<span><input id="rating" type="number" name="rating" min="1" max="5"></span></div>
+	<input id="mCommentId" class="mComment" type="text" name="comment" value="Write a comment.." onfocus="this.value='';">
+	<div><button id='submit' onclick="newMentee();">Submit</button></div>
 	</div>
 </div>
 <div id="listHead">--Mentee's list--</div>
 <div id="menteeRegion">
 <div id="mBoxId" class="mBox">
 	<div class="mName">Mentee Name</div>
-	<div class="star">Rating :
+	<div id="mStar" class="star">Rating :
 		<span class="fa fa-star"></span>
 		<span class="fa fa-star"></span>
 		<span class="fa fa-star"></span>
 		<span class="fa fa-star"></span>
 		<span class="fa fa-star"></span>
 	</div>
-	<input class="mComment" type="text" name="comment" value="Write a comment.." onfocus="this.value='';">
+	<div id="commentHead">Comments:</div>
+	<ul id="list">
+		<li>Helo</li>
+	</ul>
+	<input id="mcId"class="mComment" type="text" name="comment" value="Write a comment.." onfocus="this.value='';">
 </div>
 </div>
 <script src="main.js"></script>

@@ -1,0 +1,57 @@
+html{
+	background: #40e0d0;
+}
+
+h1{
+	text-align: center;
+	font-family: Times New Roman;
+	font-style: italic;
+	font-size: 55px;
+	letter-spacing: 0.2em;
+}
+
+#addButton{
+	border-radius: 10px;
+	width: 100px;
+	height: 40px;
+}
+
+#listHead{
+	text-align: center;
+	margin-top: 2%;
+	font-size: 40px;
+}
+
+.mBoxInput{
+	padding: 20px;
+	border-style: solid;
+	border-radius: 5px;
+	width: 200px;
+	height: 150px;
+	margin-top: 2%;
+}
+
+.mBox{
+	/*margin-right: 50%;*/
+	border-style: outset;
+	border-width: 3px;
+}
+
+.mName{
+	font-size: 25px;
+}
+
+.star{
+	margin-top: 15px;
+}
+
+.checked{
+	color: orange;
+}
+
+.mComment{
+	border-radius: 10px;
+	height: 30px;
+	margin-top: 15px;
+	margin-bottom: 10px;
+}

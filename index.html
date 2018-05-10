@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Mentee Manager</title>
+	<!--Font Awesome Icon Library-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+<h1>Mentee Manager</h1>
+<button id="addButton" onclick="addBox();">Add a Mentee</button>
+<div id="menteeRegionInput">
+	<div id="mBoxInputId" class="mBoxInput">
+	<input id="nameId" type="text" name="name" value="Mentee's Name" onfocus="this.value='';">
+	<div class="star">Rating :
+		<span class="fa fa-star"></span>
+		<span class="fa fa-star"></span>
+		<span class="fa fa-star"></span>
+		<span class="fa fa-star"></span>
+		<span class="fa fa-star"></span>
+	</div>
+	<input class="mComment" type="text" name="comment" value="Write a comment.." onfocus="this.value='';">
+	<div><input type="submit" name="submit"></div>
+	</div>
+</div>
+<div id="listHead">--Mentee's list--</div>
+<div id="menteeRegion">
+<div id="mBoxId" class="mBox">
+	<div class="mName">Mentee Name</div>
+	<div class="star">Rating :
+		<span class="fa fa-star"></span>
+		<span class="fa fa-star"></span>
+		<span class="fa fa-star"></span>
+		<span class="fa fa-star"></span>
+		<span class="fa fa-star"></span>
+	</div>
+	<input class="mComment" type="text" name="comment" value="Write a comment.." onfocus="this.value='';">
+</div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

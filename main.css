@@ -26,13 +26,23 @@ h1{
 	padding: 20px;
 	border-style: solid;
 	border-radius: 5px;
-	width: 200px;
+	width: 180px;
 	height: 150px;
 	margin-top: 2%;
 }
 
+#rating{
+	border-radius: 10px;
+}
+
+#submit{
+	margin-left: 50px;
+	margin-top: 10px;
+}
+
 .mBox{
-	/*margin-right: 50%;*/
+	margin-top: 10px;
+	padding: 10px;
 	border-style: outset;
 	border-width: 3px;
 }
@@ -47,6 +57,11 @@ h1{
 
 .checked{
 	color: orange;
+}
+
+#commentHead{
+	font-size: 20px;
+	margin-top: 15px;
 }
 
 .mComment{

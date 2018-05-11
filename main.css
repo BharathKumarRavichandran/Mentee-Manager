@@ -2,12 +2,17 @@ html{
 	background: #40e0d0;
 }
 
-h1{
+#heading{
 	text-align: center;
 	font-family: Times New Roman;
 	font-style: italic;
 	font-size: 55px;
 	letter-spacing: 0.2em;
+	border-style: solid;
+	border-radius: 4px;
+	border-width: 2px;
+	width: 11em;
+	padding: 3px;
 }
 
 #addButton{

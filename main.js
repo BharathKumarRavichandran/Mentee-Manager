@@ -58,9 +58,9 @@ function newMentee(){
 	menteeRegionInput.removeChild(mBoxInputId);
 	mentee[i] = mBoxId.cloneNode(true);
 	mentee[i].setAttribute("id","mBoxId"+i);
-	var commentChild = mentee[i].lastChild;
-	alert(commentChild);
-	//commentChild.setAttribute("id","commentButton"+i);
+	var mBoxChild = mentee[i].childNodes;
+	alert(mBoxChild[12]);
+	//mBoxChild[12].setAttribute("id","commentButton"+i);
 	/*.setAttribute("id","mName"+i);
 	.setAttribute("id","mStar"+i);
 	.setAttribute("id","listId"+i);

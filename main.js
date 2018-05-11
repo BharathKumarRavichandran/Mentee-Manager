@@ -1,4 +1,5 @@
 var addButton = document.getElementById("addButton");
+var list = document.getElementsByClassName("list");
 var menteeRegion = document.getElementById("menteeRegion");
 var menteeRegionInput = document.getElementById("menteeRegionInput");
 var mBoxId = document.getElementById("mBoxId");
@@ -45,20 +46,21 @@ function myFunction() {
 var mcId = document.getElementById("mcId");
 
 function newMentee(){
- menteeName[i] = nameId.value;
- menteeComment[i] = mCommentId.value;
- menteeRating[i] = rating.value;
- nameId.value="Mentee's Name";
- mCommentId.value="Write a comment..";
- menteeRegionInput.removeChild(mBoxInputId);
- mentee[i] = mBoxId.cloneNode(true);
- 
+	j=0;
+	menteeName[i] = nameId.value;
+	menteeComment[i] = mCommentId.value;
+	menteeRating[i] = rating.value;
+	nameId.value="Mentee's Name";
+	mCommentId.value="Write a comment..";
+	menteeRegionInput.removeChild(mBoxInputId);
+	mentee[i] = mBoxId.cloneNode(true);
+/* 
  var starNodes = mStar.childNodes;
  for(j=0;j<menteeRating[i];j++){
  	alert(starNodes[j]);
  	//starNodes[j].classList.add("checked");
  }
-
+*/
 	/*var newItem = document.createElement("LI");
     var textnode = document.createTextNode(menteeComment[i]);
     newItem.appendChild(textnode);
@@ -67,12 +69,18 @@ function newMentee(){
     //list.insertBefore(newItem,list.childNodes[0]);
 	//mComment1.innerHTML = menteeComment[i];
 
- menteeRegion.appendChild(mentee[i]);
- mName[i].innerHTML = menteeName[i];
- mComment[i].innerHTML = menteeComment[i];
- i++;
- /*var c =mentee[i].childNodes;
- for(var j=0;j<c.length;j++){ 
- alert(c[i].nodeName);
-}*/
+	menteeRegion.appendChild(mentee[i]);
+	mName[i].innerHTML = menteeName[i];
+	var newItem = document.createElement("LI");
+	var textnode = document.createTextNode(menteeComment[i]);
+	newItem.appendChild(textnode);
+	list[i].appendChild(newItem);
+	i++;
 }
+/*
+function newComment(){
+	var newItem = document.createElement("LI");
+	var textnode = document.createTextNode(menteeComment[i]);
+	newItem.appendChild(textnode);
+	list[i].appendChild(newItem);
+}*/

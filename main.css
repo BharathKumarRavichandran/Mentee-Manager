@@ -76,6 +76,10 @@ html{
 	margin-bottom: 10px;
 }
 
-#commentButton{
+.commentButtonClass{
 	border-radius: 5px;
+}
+
+.edButtons{
+	margin-top: 10px;
 }

@@ -39,6 +39,11 @@ html{
 	margin-top: 2%;
 }
 
+.star{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 #rating{
 	border-radius: 10px;
 }
@@ -66,18 +71,19 @@ html{
 }
 
 .mName{
+	font-family: "Georgia";
 	font-size: 25px;
+	font-weight: 1000;
 }
 
-.star{
-	margin-top: 15px;
-}
-
-.checked{
-	color: orange;
+.mStarClass{
+	font-family: "Comic Sans MS";
+	font-size: 20px;
+	margin-left: 30px;
 }
 
 #commentHead{
+	font-family: "Trebuchet MS";
 	font-size: 20px;
 	margin-top: 15px;
 }

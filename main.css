@@ -46,6 +46,7 @@ html{
 #submit{
 	margin-left: 50px;
 	margin-top: 10px;
+	border-radius: 5px;
 }
 
 .mBox{
@@ -88,6 +89,10 @@ html{
 }
 
 .commentButtonClass{
+	border-radius: 5px;
+}
+
+#editButton,#deleteButton{
 	border-radius: 5px;
 }
 

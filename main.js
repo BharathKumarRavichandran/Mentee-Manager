@@ -62,7 +62,8 @@ function newMentee(){
 	menteeRegionInput.removeChild(mBoxInputId);
 	mentee[i] = mBoxId.cloneNode(true);
 	mentee[i].setAttribute("id","mBoxId"+i);
-	var p = mentee[i].id;
+	mentee[i].setAttribute("id","mBoxId"+i);
+	var p = mentee[i].getAttribute("id");
 	alert(document.getElementById(p));
 	var mBoxChild = mentee[i].childNodes;
 	//alert(mBoxChild[12]);

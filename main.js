@@ -61,6 +61,7 @@ function newMentee(){
 	menteeRating[i] = rating.value;
 	nameId.value="Mentee's Name";
 	mCommentId.value="Write a comment...";
+	rating.value="";
 	menteeRegionInput.removeChild(mBoxInputId);
 	mentee[i] = mBoxId.cloneNode(true);
 	mentee[i].setAttribute("id","mBoxId"+i);
@@ -71,8 +72,8 @@ function newMentee(){
 	//mBoxChild[12].setAttribute("id","commentButton"+i);
 	mBoxId.id = "mBoxId"+i;
 	commentButton.id = "commentButton"+i;
-	//commentButton.setAttribute("id","commentButton"+i);
-	q = menteeRating[i].toString();
+	commentButton.setAttribute("id","commentButton"+i);
+	var q = menteeRating[i].toString();
 	rateSpan.innerHTML = q;
 	rateSpan.id = "rateSpan"+i;
 	//alert(document.getElementById("commentButton"+i));
@@ -113,9 +114,7 @@ function newComment(){
 	newItem.appendChild(textnode);
 	list[k].appendChild(newItem);
 	var y = document.getElementById("mcIdnew");
-	//alert(y);
 	y.value="Write a comment...";
-	//alert(mcId.id.value);
 	j++;
 }
 

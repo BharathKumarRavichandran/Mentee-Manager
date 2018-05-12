@@ -9,34 +9,28 @@
 </head>
 
 <body>
-<h1>Mentee Manager</h1>
+<h1 id="heading">Mentee Manager</h1>
 <button id="addButton" onclick="addBox();">Add a Mentee</button>
 <div id="menteeRegionInput">
 	<div id="mBoxInputId" class="mBoxInput">
-	<input id="nameId" type="text" name="name" value="Mentee's Name" onfocus="this.value='';">
-	<div class="star">Rating :
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-	</div>
-	<input class="mComment" type="text" name="comment" value="Write a comment.." onfocus="this.value='';">
-	<div><input type="submit" name="submit"></div>
+	<input required id="nameId" type="text" name="name" value="Mentee's Name" onfocus="this.value='';">
+	<div class="star">Rating :<span><input id="rating" type="number" name="rating" min="1" max="5"></span></div>
+	<input id="mCommentId" class="mComment" type="text" name="comment" value="Write a comment.." onfocus="this.value='';">
+	<div><button id='submit' onclick="newMentee();">Submit</button></div>
 	</div>
 </div>
 <div id="listHead">--Mentee's list--</div>
 <div id="menteeRegion">
 <div id="mBoxId" class="mBox">
-	<div class="mName">Mentee Name</div>
-	<div class="star">Rating :
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-	</div>
-	<input class="mComment" type="text" name="comment" value="Write a comment.." onfocus="this.value='';">
+	<span class="mName">Mentee Name</span>
+	<span id="mStar" class="mStarClass">Rating : <span id="rateSpan" class="mstar"></span></span>
+	<div id="commentHead">Comments:</div>
+	<ul id="listId" class="list">
+	</ul>
+	<input id="mcId"class="mComment" type="text" name="comment" value="Write a comment..." onfocus="this.value='';">
+	<span><button id="commentButton" class="commentButtonClass" onclick="newComment();">comment</button></span>
+	<div class="edButtons"><span><button id="editButton" onclick="editBox();">Edit Profile</button></span>
+	<span><button id="deleteButton" onclick="deleteBox();">Delete Profile</button></span></div>
 </div>
 </div>
 <script src="main.js"></script>

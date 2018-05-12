@@ -1,5 +1,5 @@
 html{
-	background: #40e0d0;
+	background: #DCD8CF;
 }
 
 #heading{
@@ -46,10 +46,18 @@ html{
 }
 
 .mBox{
-	margin-top: 10px;
+	background: #E25D33;
+	margin-left: 1.5%;
+	margin-right: 1.5%;
+	margin-top: 2%;
 	padding: 10px;
 	border-style: outset;
 	border-width: 3px;
+}
+
+.mBox:hover{
+	transform: scale(1.05);
+
 }
 
 .mName{

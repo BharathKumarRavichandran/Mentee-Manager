@@ -95,7 +95,7 @@ function newMentee(){
 	var db = document.createElement("button");
 	var nametxt = document.createTextNode(menteeName[i]);
 	var rateValue = document.createTextNode(menteeRating[i]);
-	var ratetxt = document.createTextNode("Rating :");
+	var ratetxt = document.createTextNode(" Rating :");
 	var commtxt = document.createTextNode("Comments :");
 	var cbtxt = document.createTextNode("comment");
  	var ebtxt = document.createTextNode("Edit profile");
@@ -120,10 +120,31 @@ function newMentee(){
 	div3.appendChild(span4);
 	div3.appendChild(span5);
 	div1.appendChild(div3);
+	document.getElementById("menteeRegion").appendChild(div1);
+
 
 	var classname = document.createAttribute("class");
 	var idname = document.createAttribute("id");
 	
+	classname.value ="mBox";
+	div1.setAttributeNode(classname);
+	classname.value ="mName";
+	nameSpan.setAttributeNode(classname);
+	classname.value ="mStarClass";
+	ratingSpan.setAttributeNode(classname);
+	classname.value ="mstar";
+	rateValueSpan.setAttributeNode(classname);
+	classname.value ="commentHeadClass";
+	div2.setAttributeNode(classname);
+	classname.value ="list";
+	ul.setAttributeNode(classname);
+	classname.value ="mComment";
+	input1.setAttributeNode(classname);
+	classname.value ="commentButtonClass";
+	cb.setAttributeNode(classname);
+	classname.value ="edButtons";
+	div3.setAttributeNode(classname);
+
 	idname.value = "mBoxId"+i;
 	div1.setAttributeNode(idname);
 	idname.value = "mStar";
@@ -143,26 +164,7 @@ function newMentee(){
 	idname.value = "deleteButton"+i;
 	db.setAttributeNode(idname);
 
-	classname.value ="mBox";
-	div1.setAttributeNode(classname);
-	classname.value ="mName";
-	nameSpan.setAttributeNode(classname);
-	classname.value ="mStarClass";
-	ratingSpan.setAttributeNode(classname);
-	classname.value ="mstar";
-	rateValueSpan.setAttributeNode(classname);
-	classname.value ="commentHeadClass";
-	div2.setAttributeNode(classname);
-	classname.value ="list";
-	ul.setAttributeNode(classname);
-	classname.value ="mComment";
-	input1.setAttributeNode(classname);
-	classname.value ="commentButtonClass";
-	cb.setAttributeNode(classname);
-	classname.value ="edButtons";
-	div3.setAttributeNode(classname);
-	document.getElementById("menteeRegion").appendChild(div1);
-
+	
 	mName[i].innerHTML = menteeName[i];
 	mstar[i].innerHTML = menteeRating[i];
 	var newItem = document.createElement("LI");

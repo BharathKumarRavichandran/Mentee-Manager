@@ -16,7 +16,8 @@ var mentee = new Array();
 var menteeName = new Array(); //Array which contains the name of mentees
 var menteeComment = new Array(); //Array which contains the comment on each mentees
 var menteeRating = new Array(); //Array which contains the rating oon each mentee
-var i=0;//No. of mentees
+var count = 0;//No. of mentee's
+var i=0;//Maximum mentee number
 var j=0;
 var k;
 var edit = false;
@@ -72,6 +73,11 @@ function newMentee(){
 	menteeName[i] = nameId.value;
 	menteeComment[i][j] = mCommentId.value;
 	menteeRating[i] = rating.value;
+
+	localStorage.setItem("nameSpan"+i,menteeName[i]);
+	localStorage.setItem("rateSpan"+i,menteeRating[i]);
+	localStorage.setItem("comment"+i.toString()+j.toString(),menteeComment[i][j]);
+
 	nameId.value="Mentee's Name";
 	mCommentId.value="Write a comment...";
 	rating.value="";
@@ -164,7 +170,12 @@ function newMentee(){
 	boxColorChecker(i);
 
 	i++;
+	count++;
 	j++;
+	localStorage.setItem("maxMentee",i);
+	localStorage.setItem("count",count);
+
+	localStorage.setItem("comments"+i,j);
 
 	document.getElementById("mBoxInputId").remove();
 }
@@ -177,6 +188,8 @@ function newComment(y){
 	var newItem = document.createElement("LI");
 	newItem.setAttribute("id","comment"+k.toString()+j.toString());
 	newItem.setAttribute("class","comment");
+	localStorage.setItem("comment"+k.toString()+j.toString(),menteeComment[k][j]);
+	localStorage.setItem("comments"+i,j);
 	var textnode = document.createTextNode(menteeComment[k][j]);
 	newItem.appendChild(textnode);
 	document.getElementById(listIdnew).appendChild(newItem);
@@ -195,12 +208,15 @@ function editBoxSubmit(){
 	menteeRating[k] = rating.value;
 	var nameSpannew = "nameSpan"+k;
 	var rateSpannew = "rateSpan"+k;
+	localStorage.setItem("nameSpan"+k,menteeName[k]);
+	localStorage.setItem("rateSpan"+k,menteeRating[k]);
 	document.getElementById(nameSpannew).innerHTML == nameId.value;
 	document.getElementById(rateSpannew).innerHTML == rating.value;
 	boxColorChecker(k);
 
 	if(mCommentId.value!="" || mCommentId.value!="Write a comment..."){
 		menteeComment[k][j] = mCommentId.value;
+		localStorage.setItem("comment"+k.toString()+j.toString(),menteeComment[k][j]);
 		var mcIdnew = "mcId"+k;
 		var listIdnew = "listId"+k;
 		menteeComment[k][j] = document.getElementById(mcIdnew).value;
@@ -222,5 +238,7 @@ function deleteBox(y){
 	var k = y.id[12];//To get the mentee number
 	var mBoxIdnew = "mBoxId"+k;
 	var x = document.getElementById(mBoxIdnew);
-	x.remove();	
+	x.remove();
+	count--;
+	localStorage.setItem("count",count);	
 }

@@ -174,7 +174,6 @@ function newMentee(){
 	j++;
 	localStorage.setItem("maxMentee",i);
 	localStorage.setItem("count",count);
-
 	localStorage.setItem("comments"+i,j);
 
 	document.getElementById("mBoxInputId").remove();
@@ -189,7 +188,7 @@ function newComment(y){
 	newItem.setAttribute("id","comment"+k.toString()+j.toString());
 	newItem.setAttribute("class","comment");
 	localStorage.setItem("comment"+k.toString()+j.toString(),menteeComment[k][j]);
-	localStorage.setItem("comments"+i,j);
+	localStorage.setItem("comments"+k,j);
 	var textnode = document.createTextNode(menteeComment[k][j]);
 	newItem.appendChild(textnode);
 	document.getElementById(listIdnew).appendChild(newItem);

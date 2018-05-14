@@ -209,17 +209,19 @@ function editBoxSubmit(){
 	var rateSpannew = "rateSpan"+k;
 	localStorage.setItem("nameSpan"+k,menteeName[k]);
 	localStorage.setItem("rateSpan"+k,menteeRating[k]);
-	document.getElementById(nameSpannew).innerHTML == nameId.value;
-	document.getElementById(rateSpannew).innerHTML == rating.value;
+	document.getElementById(nameSpannew).innerHTML = nameId.value;
+	document.getElementById(rateSpannew).innerHTML = rating.value;
 	boxColorChecker(k);
-
-	if(mCommentId.value!="" || mCommentId.value!="Write a comment..."){
-		menteeComment[k][j] = mCommentId.value;
+	var commentAdd = mCommentId.value;
+	if(commentAdd!="" || commentAdd!="Write a comment..."){
+		menteeComment[k][j] = commentAdd;
 		localStorage.setItem("comment"+k.toString()+j.toString(),menteeComment[k][j]);
 		var mcIdnew = "mcId"+k;
 		var listIdnew = "listId"+k;
 		menteeComment[k][j] = document.getElementById(mcIdnew).value;
 		var newItem = document.createElement("LI");
+		newItem.setAttribute("id","comment"+k.toString()+j.toString());
+		newItem.setAttribute("class","comment");
 		var textnode = document.createTextNode(menteeComment[k][j]);
 		newItem.appendChild(textnode);
 		document.getElementById(listIdnew).appendChild(newItem);

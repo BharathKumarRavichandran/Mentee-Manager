@@ -195,12 +195,12 @@ function editBoxSubmit(){
 	menteeRating[k] = rating.value;
 	var nameSpannew = "nameSpan"+k;
 	var rateSpannew = "rateSpan"+k;
-	document.getElementById(nameSpannew).innerHTML == nameId.value;
-	document.getElementById(rateSpannew).innerHTML == rating.value;
+	document.getElementById(nameSpannew).innerHTML = nameId.value;
+	document.getElementById(rateSpannew).innerHTML = rating.value;
 	boxColorChecker(k);
-
-	if(mCommentId.value!="" || mCommentId.value!="Write a comment..."){
-		menteeComment[k][j] = mCommentId.value;
+	var commentAdd = mCommentId.value;
+	if(commentAdd!="" || commentAdd!="Write a comment..."){
+		menteeComment[k][j] = commentAdd;
 		var mcIdnew = "mcId"+k;
 		var listIdnew = "listId"+k;
 		menteeComment[k][j] = document.getElementById(mcIdnew).value;

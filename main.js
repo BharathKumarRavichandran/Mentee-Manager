@@ -29,6 +29,9 @@ var i=0;//No. of mentees
 var j=0;
 var k=0;
 
+var selector = false;
+var selectBox = new Array();
+
 if(w>500){
 	heading.style.marginLeft = (w-w/2.5)+"px";//To centre the heading
 	addButton.style.marginLeft = (w-w/12)+"px"; //To centre the element
@@ -41,6 +44,17 @@ var mstar =document.getElementsByClassName("mstar");
 window.onload = function(){
 	menteeRegion.removeChild(mBoxId);
 	menteeRegionInput.removeChild(mBoxInputId);
+}
+
+Element.prototype.remove = function() {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for(var i = this.length - 1; i >= 0; i--) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
 }
 
 function addBox(){
@@ -67,23 +81,24 @@ function newMentee(){
 	rating.value="";
 	menteeRegionInput.removeChild(mBoxInputId);
 	mentee[i] = mBoxId.cloneNode(true);
+	menteeRegion.appendChild(mentee[i]);
 	mentee[i].setAttribute("id","mBoxId"+i);
-	var p = mentee[i].getAttribute("id");
-	//alert(document.getElementById(p));
+	
 	var mBoxChild = mentee[i].childNodes;
 	//alert(mBoxChild[12]);
 	//mBoxChild[12].setAttribute("id","commentButton"+i);
-	mBoxId.id = "mBoxId"+i;
-	commentButton.id = "commentButton"+i;
+	mBoxId.setAttribute("id","mBoxId"+i);
 	commentButton.setAttribute("id","commentButton"+i);
+	var p = "commentButton"+i;
+	console.log(document.getElementById(p));
 	var q = menteeRating[i].toString();
 	rateSpan.innerHTML = q;
-	rateSpan.id = "rateSpan"+i;
+	rateSpan.setAttribute("id","rateSpan"+i);
 	//alert(document.getElementById("commentButton"+i));
-	mcId.id ="mcId"+i;
-	editButton.id = "editButton"+i;
-	deleteButton.id = "deleteButton"+i;
-	mStar.id = "mStar"+i;
+	mcId.setAttribute("id","mcId"+i);
+	editButton.setAttribute("id","editButton"+i); 
+	deleteButton.setAttribute("id","deleteButton"+i);
+	mStar.setAttribute("id","mStar"+i);
 	/*.setAttribute("id","mName"+i);
 	.setAttribute("id","mStar"+i);
 	.setAttribute("id","listId"+i);*/
@@ -96,7 +111,6 @@ function newMentee(){
     //list.insertBefore(newItem,list.childNodes[0]);
 	//mComment1.innerHTML = menteeComment[i];
 
-	menteeRegion.appendChild(mentee[i]);
 	mName[i].innerHTML = menteeName[i];
 	mstar[i].innerHTML = menteeRating[i];
 	var newItem = document.createElement("LI");
@@ -107,10 +121,9 @@ function newMentee(){
 	j++;
 }
 
-function newComment(){
+function newComment(y){
 	k = commentButton.id[13];//To get the mentee number
-	var mcIdnew = mcId.id;
-	alert(mcIdnew);
+	console.log(y.id);
 	menteeComment[k][j] = mcIdnew.value;
 	var newItem = document.createElement("LI");
 	var textnode = document.createTextNode(menteeComment[k][j]);
@@ -125,10 +138,33 @@ function editBox(){
 	k = editButton.id[10];//To get the mentee number
 }
 
-function deleteBox(){
+function deleteBox(x){
 	k = deleteButton.id[12];//To get the mentee number
+	console.log(k);
+	//var r = x.getAttribute("id");
 	mBoxIdnew = "mBoxId"+k;
 	var x = document.getElementById(mBoxIdnew);
 	x.parentNode.removeChild(x);
-	menteeRegion.removeChild(mentee[k]);
+	//menteeRegion.removeChild(mBox[k]);
+	/*console.log(r.toString()[12]);
+	if(r[12]==undefined){
+		document.getElementsByClassName("mBox").remove();
+	}
+	else{
+		l=r[12];
+		console.log(l);	
+		mBox[l].remove();
+	}*/
+	
 }
+
+/*
+function selected(y){
+	console.log(y);
+	y.style.backgroundColor = "lightblue";
+	//selectBox[] == true;
+}
+
+function del(){
+
+}*/

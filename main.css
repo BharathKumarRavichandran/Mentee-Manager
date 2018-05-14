@@ -54,6 +54,13 @@ html{
 	border-radius: 5px;
 }
 
+hr{
+	height: 3px;
+	color: #FFB732;
+	background: #654321;
+	border-radius: 5px;
+}
+
 .mBox{
 	background: #FFC04C;
 	margin-left: 1.5%;
@@ -96,10 +103,12 @@ html{
 
 .commentButtonClass{
 	border-radius: 5px;
+	margin: 3px;
 }
 
-#editButton,#deleteButton{
+.editButtonClass,.deleteButtonClass{
 	border-radius: 5px;
+	margin: 3px;
 }
 
 .edButtons{

@@ -23,13 +23,6 @@ html{
 	height: 40px;
 }
 
-#delButton{
-	background: #FFC04C;
-	border-radius: 10px;
-	width: 100px;
-	height: 40px;
-}
-
 #listHead{
 	text-align: center;
 	margin-top: 2%;

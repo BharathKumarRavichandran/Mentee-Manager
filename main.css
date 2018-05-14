@@ -105,3 +105,82 @@ html{
 .edButtons{
 	margin-top: 10px;
 }
+
+@media only screen and (max-width: 500px){
+	#heading{
+		font-size: 1.5em;
+		border-width: 1.2px;
+		width: 10em;
+		margin-top: 15%;
+		transform: scale(0.9);
+		margin-left: 13vw;
+	}
+
+	#addButton{
+		font-size: 0.8em;
+		margin-top: 10%;
+		width: 25vw;
+		height: 4vh;
+		margin-left: 30vw;
+	}
+
+	#listHead{
+		margin-top: 8%;
+		font-size: 1.9em;
+		margin-left: -13vw;
+	}
+
+	.mBoxInput{
+		transform: scale(0.8);
+		margin-left: 15vw;
+	}
+
+	.mBox{
+		transform: scale(0.8);
+		margin-top: 1%;
+		margin-left: -2vw;
+	}
+
+	.mBox:hover{
+		transform: scale(1);
+	}
+
+	.mName{
+		font-size: 1em;
+	}
+
+	.mStarClass{
+		font-size: 1em;
+	}
+
+	#commentHead{
+		font-size: 1em;
+	}
+
+
+}
+
+@media only screen and (max-width: 325px){
+	#heading{
+		font-size: 1.5em;
+		border-width: 1.2px;
+		margin-top: 15%;
+		transform: scale(0.9);
+		margin-left: 6vw;
+	}	
+
+	#addButton{
+		width: 100px;
+		height: 40px;
+		margin-left: 27vw;
+	}
+
+	.mBoxInput{
+		transform: scale(0.8);
+		margin-left: 9vw;
+	}
+
+	#listHead{
+		margin-left: -8vw;
+	}
+}

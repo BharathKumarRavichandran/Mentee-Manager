@@ -56,6 +56,16 @@ function submitButton(){
 	}
 }
 
+function boxColorChecker(l){
+	if(menteeRating[l]>3&&menteeRating[l]<=5){
+		document.getElementById("mBoxId"+l).style.backgroundColor = "#01FF70";
+	}
+
+	else if(menteeRating[l]<3){
+		document.getElementById("mBoxId"+l).style.backgroundColor = "#FF4136";	
+	}
+}
+
 function newMentee(){
 	j=0;
 	menteeComment[i] = new Array();
@@ -148,6 +158,9 @@ function newMentee(){
 	var textnode = document.createTextNode(menteeComment[i][j]);
 	newItem.appendChild(textnode);
 	document.getElementById("listId"+i).appendChild(newItem);
+
+	boxColorChecker(i);
+
 	i++;
 	j++;
 
@@ -176,10 +189,13 @@ function editBox(y){
 function editBoxSubmit(){
 	menteeName[k] = nameId.value;
 	menteeRating[k] = rating.value;
-	document.getElementById("nameSpan"+k).innerHTML == nameId.value;
-	document.getElementById("rateSpan"+k).innerHTML == rating.value;
+	var nameSpannew = "nameSpan"+k;
+	var rateSpannew = "rateSpan"+k;
+	document.getElementById(nameSpannew).innerHTML == nameId.value;
+	document.getElementById(rateSpannew).innerHTML == rating.value;
 	console.log(document.getElementById("rateSpan"+k));
 	console.log(rating.value);
+	boxColorChecker(k);
 
 	if(mCommentId.value!="" || mCommentId.value!="Write a comment..."){
 		menteeComment[k][j] = mCommentId.value;

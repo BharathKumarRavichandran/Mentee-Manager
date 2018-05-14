@@ -130,6 +130,8 @@ function newMentee(){
 	input1.setAttribute("class","mComment");
 	cb.setAttribute("class","commentButtonClass");
 	div3.setAttribute("class","edButtons");
+	eb.setAttribute("class","editButtonClass");
+	db.setAttribute("class","deleteButtonClass");
 
 	input1.setAttribute("type","text");
 	input1.setAttribute("name","comment");
@@ -173,7 +175,6 @@ function editBox(y){
 
 function editBoxSubmit(){
 	menteeName[k] = nameId.value;
-	menteeComment[k][j] = mCommentId.value;
 	menteeRating[k] = rating.value;
 	document.getElementById("nameSpan"+k).innerHTML == nameId.value;
 	document.getElementById("rateSpan"+k).innerHTML == rating.value;
@@ -181,6 +182,7 @@ function editBoxSubmit(){
 	console.log(rating.value);
 
 	if(mCommentId.value!="" || mCommentId.value!="Write a comment..."){
+		menteeComment[k][j] = mCommentId.value;
 		var mcIdnew = "mcId"+k;
 		var listIdnew = "listId"+k;
 		menteeComment[k][j] = document.getElementById(mcIdnew).value;

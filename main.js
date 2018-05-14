@@ -80,19 +80,29 @@ function newMentee(){
 	rating.value="";
 
 	var div1 = document.createElement("div");
+	div1.setAttribute("id","mBoxId"+i);
 	var nameSpan = document.createElement("span");
+	nameSpan.setAttribute("id","nameSpan"+i);
 	var ratingSpan = document.createElement("span");
+	ratingSpan.setAttribute("id","mStar");
 	var rateValueSpan = document.createElement("span");
+	rateValueSpan.setAttribute("id","rateSpan"+i)
 	var div2 = document.createElement("div");
+	div2.setAttribute("id","commentHead");
 	var ul = document.createElement("ul");
+	ul.setAttribute("id","listId"+i)
 	var input1 = document.createElement("input");
+	input1.setAttribute("id","mcId"+i);
 	var span3 = document.createElement("span");
 	var cb = document.createElement("button");
+	cb.setAttribute("id","commentButton"+i);
 	var div3 = document.createElement("div");
 	var span4 = document.createElement("span");
 	var eb = document.createElement("button");
+	eb.setAttribute("id","editButton"+i);
 	var span5 = document.createElement("span");
 	var db = document.createElement("button");
+	db.setAttribute("id","deleteButton"+i);
 	var nametxt = document.createTextNode(menteeName[i]);
 	var rateValue = document.createTextNode(menteeRating[i]);
 	var ratetxt = document.createTextNode(" Rating :");
@@ -121,49 +131,16 @@ function newMentee(){
 	div3.appendChild(span5);
 	div1.appendChild(div3);
 	document.getElementById("menteeRegion").appendChild(div1);
-
-
-	var classname = document.createAttribute("class");
-	var idname = document.createAttribute("id");
 	
-	classname.value ="mBox";
-	div1.setAttributeNode(classname);
-	classname.value ="mName";
-	nameSpan.setAttributeNode(classname);
-	classname.value ="mStarClass";
-	ratingSpan.setAttributeNode(classname);
-	classname.value ="mstar";
-	rateValueSpan.setAttributeNode(classname);
-	classname.value ="commentHeadClass";
-	div2.setAttributeNode(classname);
-	classname.value ="list";
-	ul.setAttributeNode(classname);
-	classname.value ="mComment";
-	input1.setAttributeNode(classname);
-	classname.value ="commentButtonClass";
-	cb.setAttributeNode(classname);
-	classname.value ="edButtons";
-	div3.setAttributeNode(classname);
-
-	idname.value = "mBoxId"+i;
-	div1.setAttributeNode(idname);
-	idname.value = "mStar";
-	//ratingSpan.setAttributeNode(idname);
-	idname.value = "rateSpan"+i;
-	//rateValueSpan.setAttributeNode(idname);
-	idname.value = "commentHead";
-	div2.setAttributeNode(idname);
-	idname.value = "listId"+i;
-	ul.setAttributeNode(idname);
-	idname.value = "mcId"+i;
-	input1.setAttributeNode(idname);
-	idname.value = "commentButton"+i;
-	cb.setAttributeNode(idname);
-	idname.value = "editButton"+i;
-	eb.setAttributeNode(idname);
-	idname.value = "deleteButton"+i;
-	db.setAttributeNode(idname);
-
+	div1.setAttribute("class","mBox");
+	nameSpan.setAttribute("class","mName");
+	ratingSpan.setAttribute("class","mStarClass");
+	rateValueSpan.setAttribute("class","mstar");
+	div2.setAttribute("class","commentHeadClass");
+	ul.setAttribute("class","list");
+	input1.setAttribute("class","mComment");
+	cb.setAttribute("class","commentButtonClass");
+	div3.setAttribute("class","edButtons");
 	
 	mName[i].innerHTML = menteeName[i];
 	mstar[i].innerHTML = menteeRating[i];

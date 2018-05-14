@@ -28,9 +28,12 @@ var menteeRating = new Array(); //Array which contains the rating oon each mente
 var i=0;//No. of mentees
 var j=0;
 var k=0;
-heading.style.marginLeft = (w-w/2.5)+"px";//To centre the heading
-addButton.style.marginLeft = (w-w/12)+"px"; //To centre the element
-mBoxInputId.style.marginLeft = (w-w/6)+"px"; //To centre the element
+
+if(w>500){
+	heading.style.marginLeft = (w-w/2.5)+"px";//To centre the heading
+	addButton.style.marginLeft = (w-w/12)+"px"; //To centre the element
+	mBoxInputId.style.marginLeft = (w-w/6)+"px"; //To centre the element	
+}
 
 var rateSpan = document.getElementById("rateSpan");
 var mstar =document.getElementsByClassName("mstar");
@@ -127,4 +130,5 @@ function deleteBox(){
 	mBoxIdnew = "mBoxId"+k;
 	var x = document.getElementById(mBoxIdnew);
 	x.parentNode.removeChild(x);
+	menteeRegion.removeChild(mentee[k]);
 }

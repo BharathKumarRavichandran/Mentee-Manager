@@ -82,7 +82,7 @@ html{
 	margin-left: 30px;
 }
 
-#commentHead{
+.commentHeadClass{
 	font-family: "Trebuchet MS";
 	font-size: 20px;
 	margin-top: 15px;

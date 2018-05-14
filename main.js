@@ -1,21 +1,12 @@
 var addButton = document.getElementById("addButton");
-var commentButton = document.getElementById("commentButton");
-var editButton = document.getElementById("editButton");
-var deleteButton = document.getElementById("deleteButton");
 var heading = document.getElementById("heading");
-var list = document.getElementsByClassName("list");
 var menteeRegion = document.getElementById("menteeRegion");
 var menteeRegionInput = document.getElementById("menteeRegionInput");
-var mBoxId = document.getElementById("mBoxId");
 var mBoxInputId = document.getElementById("mBoxInputId");
-var mBox = document.getElementsByClassName("mBox");
 var mBoxInput = document.getElementsByClassName("mBoxInput");
-var mcId = document.getElementById("mcId");
 var mCommentId = document.getElementById("mCommentId");
-var mName = document.getElementsByClassName("mName");
 var mComment = document.getElementsByClassName("mComment");
-var mComment1 = document.getElementById("mComment1");
-var mStar = document.getElementById("mStar");
+var mName = document.getElementsByClassName("mName");
 var nameId = document.getElementById("nameId");
 var rating = document.getElementById("rating");
 var width = window.innerWidth;
@@ -27,7 +18,6 @@ var menteeComment = new Array(); //Array which contains the comment on each ment
 var menteeRating = new Array(); //Array which contains the rating oon each mentee
 var i=0;//No. of mentees
 var j=0;
-var k=0;
 
 if(w>500){
 	heading.style.marginLeft = (w-w/2.5)+"px";//To centre the heading
@@ -39,22 +29,23 @@ var rateSpan = document.getElementById("rateSpan");
 var mstar =document.getElementsByClassName("mstar");
 
 window.onload = function(){
-	menteeRegion.removeChild(mBoxId);
 	menteeRegionInput.removeChild(mBoxInputId);
+}
+
+Element.prototype.remove = function() {  //Function written to remove element easily using .remove()
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for(var i = this.length - 1; i >= 0; i--) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
 }
 
 function addBox(){
  menteeRegionInput.appendChild(mBoxInputId);
 }
-/*
-function myFunction() {
-    var newItem = document.createElement("LI");
-    var textnode = document.createTextNode("Water");
-    newItem.appendChild(textnode);
-
-    var list = document.getElementById("myList");
-    list.insertBefore(newItem, list.childNodes[0]);
-}*/
 
 function newMentee(){
 	j=0;
@@ -65,70 +56,113 @@ function newMentee(){
 	nameId.value="Mentee's Name";
 	mCommentId.value="Write a comment...";
 	rating.value="";
-	menteeRegionInput.removeChild(mBoxInputId);
-	mentee[i] = mBoxId.cloneNode(true);
-	mentee[i].setAttribute("id","mBoxId"+i);
-	var p = mentee[i].getAttribute("id");
-	//alert(document.getElementById(p));
-	var mBoxChild = mentee[i].childNodes;
-	//alert(mBoxChild[12]);
-	//mBoxChild[12].setAttribute("id","commentButton"+i);
-	mBoxId.id = "mBoxId"+i;
-	commentButton.id = "commentButton"+i;
-	commentButton.setAttribute("id","commentButton"+i);
-	var q = menteeRating[i].toString();
-	rateSpan.innerHTML = q;
-	rateSpan.id = "rateSpan"+i;
-	//alert(document.getElementById("commentButton"+i));
-	mcId.id ="mcId"+i;
-	editButton.id = "editButton"+i;
-	deleteButton.id = "deleteButton"+i;
-	mStar.id = "mStar"+i;
-	/*.setAttribute("id","mName"+i);
-	.setAttribute("id","mStar"+i);
-	.setAttribute("id","listId"+i);*/
 
-	/*var newItem = document.createElement("LI");
-    var textnode = document.createTextNode(menteeComment[i]);
-    newItem.appendChild(textnode);
-    var list = document.getElementById("list");
-    list.appendChild(newItem);*/
-    //list.insertBefore(newItem,list.childNodes[0]);
-	//mComment1.innerHTML = menteeComment[i];
+	var div1 = document.createElement("div");
+	var nameSpan = document.createElement("span");
+	var ratingSpan = document.createElement("span");
+	var rateValueSpan = document.createElement("span");
+	var div2 = document.createElement("div");
+	var ul = document.createElement("ul");
+	var input1 = document.createElement("input");
+	var span3 = document.createElement("span");
+	var cb = document.createElement("button");
+	var div3 = document.createElement("div");
+	var span4 = document.createElement("span");
+	var eb = document.createElement("button");
+	var span5 = document.createElement("span");
+	var db = document.createElement("button");
+	
+	var nametxt = document.createTextNode(menteeName[i]);
+	var rateValue = document.createTextNode(menteeRating[i]);
+	var ratetxt = document.createTextNode(" Rating :");
+	var commtxt = document.createTextNode("Comments :");
+	var cbtxt = document.createTextNode("comment");
+ 	var ebtxt = document.createTextNode("Edit profile");
+ 	var dbtxt = document.createTextNode("Delete profile");
+	nameSpan.appendChild(nametxt);
+	ratingSpan.appendChild(ratetxt);
+	rateValueSpan.appendChild(rateValue);
+	ratingSpan.appendChild(rateValueSpan);
+	div2.appendChild(commtxt);
+	cb.appendChild(cbtxt);
+	eb.appendChild(ebtxt);
+	db.appendChild(dbtxt);
+	div1.appendChild(nameSpan);
+	div1.appendChild(ratingSpan);
+	div1.appendChild(div2);
+	div1.appendChild(ul);
+	div1.appendChild(input1);
+	span3.appendChild(cb);
+	div1.appendChild(span3);
+	span4.appendChild(eb);
+	span5.appendChild(db);
+	div3.appendChild(span4);
+	div3.appendChild(span5);
+	div1.appendChild(div3);
+	document.getElementById("menteeRegion").appendChild(div1);
 
-	menteeRegion.appendChild(mentee[i]);
-	mName[i].innerHTML = menteeName[i];
-	mstar[i].innerHTML = menteeRating[i];
+	div1.setAttribute("id","mBoxId"+i);
+	nameSpan.setAttribute("id","nameSpan"+i);
+	ratingSpan.setAttribute("id","mStar");
+	rateValueSpan.setAttribute("id","rateSpan"+i);
+	div2.setAttribute("id","commentHead");
+	ul.setAttribute("id","listId"+i);
+	input1.setAttribute("id","mcId"+i);
+	cb.setAttribute("id","commentButton"+i);
+	eb.setAttribute("id","editButton"+i);
+	db.setAttribute("id","deleteButton"+i);
+	
+	div1.setAttribute("class","mBox");
+	nameSpan.setAttribute("class","mName");
+	ratingSpan.setAttribute("class","mStarClass");
+	rateValueSpan.setAttribute("class","mstar");
+	div2.setAttribute("class","commentHeadClass");
+	ul.setAttribute("class","list");
+	input1.setAttribute("class","mComment");
+	cb.setAttribute("class","commentButtonClass");
+	div3.setAttribute("class","edButtons");
+
+	input1.setAttribute("type","text");
+	input1.setAttribute("name","comment");
+	input1.setAttribute("onfocus","this.value='';");
+	input1.setAttribute("value","Write a comment...");
+
+	cb.setAttribute("onclick","newComment(this);");
+	eb.setAttribute("onclick","editBox(this);");
+	db.setAttribute("onclick","deleteBox(this);")
+	
+	document.getElementById("nameSpan"+i).innerHTML = menteeName[i];
+	document.getElementById("rateSpan"+i).innerHTML = menteeRating[i];
 	var newItem = document.createElement("LI");
 	var textnode = document.createTextNode(menteeComment[i][j]);
 	newItem.appendChild(textnode);
-	list[i].appendChild(newItem);
+	document.getElementById("listId"+i).appendChild(newItem);
 	i++;
 	j++;
+
+	document.getElementById("mBoxInputId").remove();
 }
 
-function newComment(){
-	k = commentButton.id[13];//To get the mentee number
-	var mcIdnew = mcId.id;
-	alert(mcIdnew);
-	menteeComment[k][j] = mcIdnew.value;
+function newComment(y){
+	var k = y.id[13];
+	var mcIdnew = "mcId"+k;
+	var listIdnew = "listId"+k;
+	menteeComment[k][j] = document.getElementById(mcIdnew).value;
 	var newItem = document.createElement("LI");
 	var textnode = document.createTextNode(menteeComment[k][j]);
 	newItem.appendChild(textnode);
-	list[k].appendChild(newItem);
-	var y = document.getElementById("mcIdnew");
-	y.value="Write a comment...";
+	document.getElementById(listIdnew).appendChild(newItem);
+	document.getElementById(mcIdnew).value="Write a comment...";
 	j++;
 }
 
-function editBox(){
-	k = editButton.id[10];//To get the mentee number
+function editBox(y){
+	k = y.id[10];//To get the mentee number
 }
 
-function deleteBox(){
-	k = deleteButton.id[12];//To get the mentee number
-	mBoxIdnew = "mBoxId"+k;
+function deleteBox(y){
+	var k = y.id[12];//To get the mentee number
+	var mBoxIdnew = "mBoxId"+k;
 	var x = document.getElementById(mBoxIdnew);
-	x.parentNode.removeChild(x);
-	menteeRegion.removeChild(mentee[k]);
+	x.remove();	
 }

@@ -238,6 +238,12 @@ function deleteBox(y){
 	var mBoxIdnew = "mBoxId"+k;
 	var x = document.getElementById(mBoxIdnew);
 	x.remove();
+	localStorage.removeItem("nameSpan"+k);
+	localStorage.removeItem("rateSpan"+k);
+	localStorage.removeItem("comments"+k);
+	for(;j>=0;j--){
+		localStorage.removeItem("comment"+k.toString()+j.toString(),menteeComment[k][j]);
+	}
 	count--;
 	localStorage.setItem("count",count);	
 }

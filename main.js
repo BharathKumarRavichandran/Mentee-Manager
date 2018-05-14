@@ -18,15 +18,14 @@ var menteeComment = new Array(); //Array which contains the comment on each ment
 var menteeRating = new Array(); //Array which contains the rating oon each mentee
 var i=0;//No. of mentees
 var j=0;
+var k;
+var edit = false;
 
 if(w>500){
 	heading.style.marginLeft = (w-w/2.5)+"px";//To centre the heading
 	addButton.style.marginLeft = (w-w/12)+"px"; //To centre the element
 	mBoxInputId.style.marginLeft = (w-w/6)+"px"; //To centre the element	
 }
-
-var rateSpan = document.getElementById("rateSpan");
-var mstar =document.getElementsByClassName("mstar");
 
 window.onload = function(){
 	menteeRegionInput.removeChild(mBoxInputId);
@@ -44,7 +43,17 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
 }
 
 function addBox(){
- menteeRegionInput.appendChild(mBoxInputId);
+	menteeRegionInput.appendChild(mBoxInputId);
+}
+
+function submitButton(){
+	if(edit==false){
+		newMentee();
+	}
+
+	else{
+		editBoxSubmit();
+	}
 }
 
 function newMentee(){
@@ -158,6 +167,35 @@ function newComment(y){
 
 function editBox(y){
 	k = y.id[10];//To get the mentee number
+	edit=true;
+	menteeRegionInput.appendChild(mBoxInputId);
+}
+
+function editBoxSubmit(){
+	menteeName[k] = nameId.value;
+	menteeComment[k][j] = mCommentId.value;
+	menteeRating[k] = rating.value;
+	document.getElementById("nameSpan"+k).innerHTML == nameId.value;
+	document.getElementById("rateSpan"+k).innerHTML == rating.value;
+	console.log(document.getElementById("rateSpan"+k));
+	console.log(rating.value);
+
+	//if(mCommentId.value!="" || mCommentId.value!="Write a comment..."){
+		var mcIdnew = "mcId"+k;
+		var listIdnew = "listId"+k;
+		menteeComment[k][j] = document.getElementById(mcIdnew).value;
+		var newItem = document.createElement("LI");
+		var textnode = document.createTextNode(menteeComment[k][j]);
+		newItem.appendChild(textnode);
+		document.getElementById(listIdnew).appendChild(newItem);
+		j++;
+	//}	
+	edit=false;
+	nameId.value="Mentee's Name";
+	mCommentId.value="Write a comment...";
+	rating.value="";
+	k=-1;
+	document.getElementById("mBoxInputId").remove();
 }
 
 function deleteBox(y){

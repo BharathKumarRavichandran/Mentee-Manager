@@ -205,6 +205,8 @@ function editBoxSubmit(){
 		var listIdnew = "listId"+k;
 		menteeComment[k][j] = document.getElementById(mcIdnew).value;
 		var newItem = document.createElement("LI");
+		newItem.setAttribute("id","comment"+k.toString()+j.toString());
+		newItem.setAttribute("class","comment");
 		var textnode = document.createTextNode(menteeComment[k][j]);
 		newItem.appendChild(textnode);
 		document.getElementById(listIdnew).appendChild(newItem);

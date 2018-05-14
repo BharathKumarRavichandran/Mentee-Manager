@@ -155,6 +155,8 @@ function newMentee(){
 	document.getElementById("nameSpan"+i).innerHTML = menteeName[i];
 	document.getElementById("rateSpan"+i).innerHTML = menteeRating[i];
 	var newItem = document.createElement("LI");
+	newItem.setAttribute("id","comment"+i.toString()+j.toString());
+	newItem.setAttribute("class","comment");
 	var textnode = document.createTextNode(menteeComment[i][j]);
 	newItem.appendChild(textnode);
 	document.getElementById("listId"+i).appendChild(newItem);
@@ -173,6 +175,8 @@ function newComment(y){
 	var listIdnew = "listId"+k;
 	menteeComment[k][j] = document.getElementById(mcIdnew).value;
 	var newItem = document.createElement("LI");
+	newItem.setAttribute("id","comment"+k.toString()+j.toString());
+	newItem.setAttribute("class","comment");
 	var textnode = document.createTextNode(menteeComment[k][j]);
 	newItem.appendChild(textnode);
 	document.getElementById(listIdnew).appendChild(newItem);
@@ -193,8 +197,6 @@ function editBoxSubmit(){
 	var rateSpannew = "rateSpan"+k;
 	document.getElementById(nameSpannew).innerHTML == nameId.value;
 	document.getElementById(rateSpannew).innerHTML == rating.value;
-	console.log(document.getElementById("rateSpan"+k));
-	console.log(rating.value);
 	boxColorChecker(k);
 
 	if(mCommentId.value!="" || mCommentId.value!="Write a comment..."){

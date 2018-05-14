@@ -101,6 +101,10 @@ hr{
 	margin-bottom: 10px;
 }
 
+.comment{
+	font-family: "Trebuchet MS";
+}
+
 .commentButtonClass{
 	border-radius: 5px;
 	margin: 3px;

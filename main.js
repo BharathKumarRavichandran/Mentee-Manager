@@ -180,7 +180,7 @@ function editBoxSubmit(){
 	console.log(document.getElementById("rateSpan"+k));
 	console.log(rating.value);
 
-	//if(mCommentId.value!="" || mCommentId.value!="Write a comment..."){
+	if(mCommentId.value!="" || mCommentId.value!="Write a comment..."){
 		var mcIdnew = "mcId"+k;
 		var listIdnew = "listId"+k;
 		menteeComment[k][j] = document.getElementById(mcIdnew).value;
@@ -189,7 +189,7 @@ function editBoxSubmit(){
 		newItem.appendChild(textnode);
 		document.getElementById(listIdnew).appendChild(newItem);
 		j++;
-	//}	
+	}	
 	edit=false;
 	nameId.value="Mentee's Name";
 	mCommentId.value="Write a comment...";

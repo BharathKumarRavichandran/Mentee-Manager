@@ -136,13 +136,9 @@ function initialise(){
 	
 	for(var t=0;t<i;t++){
 		if(localStorage.getItem("nameSpan"+t)===null){
-			/*console.log("if "+t);
-			console.log("nameSpan"+t);
-			console.log(localStorage.getItem("nameSpan"+t));*/
 			//do nothing
 		}
 		else{
-			//console.log("else "+t);
 			j = localStorage.getItem("comments"+t);
 
 			drawBox(t);
@@ -199,10 +195,9 @@ function newMentee(){
 	drawBox(i);
 
 	localStorage.setItem("nameSpan"+i,menteeName[i]);
-	console.log(localStorage.getItem("nameSpan"+i));
 	localStorage.setItem("rateSpan"+i,menteeRating[i]);
-	console.log(localStorage.getItem("rateSpan"+i));
 	localStorage.setItem("comment"+i+""+j,menteeComment[i][j]);
+	localStorage.setItem("comments"+i,j);
 
 	nameId.value="Mentee's Name";
 	mCommentId.value="Write a comment...";

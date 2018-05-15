@@ -16,7 +16,21 @@ html{
 	padding: 3px;
 }
 
+#sortButton{
+	background: #FFC04C;
+	border-radius: 10px;
+	width: 100px;
+	height: 40px;
+}
+
 #addButton{
+	background: #FFC04C;
+	border-radius: 10px;
+	width: 100px;
+	height: 40px;
+}
+
+#clearButton{
 	background: #FFC04C;
 	border-radius: 10px;
 	width: 100px;
@@ -129,12 +143,26 @@ hr{
 		margin-left: 13vw;
 	}
 
+	#sortButton{
+		font-size: 0.8em;
+		margin-top: 10%;
+		width: 23vw;
+		height: 4vh;
+		margin-left: 12vw;
+	}
+
 	#addButton{
 		font-size: 0.8em;
 		margin-top: 10%;
-		width: 25vw;
+		width: 23vw;
 		height: 4vh;
-		margin-left: 30vw;
+	}
+
+	#clearButton{
+		font-size: 0.8em;
+		margin-top: 10%;
+		width: 23vw;
+		height: 4vh;
 	}
 
 	#listHead{
@@ -182,10 +210,21 @@ hr{
 		margin-left: 6vw;
 	}	
 
+	#sortButton{
+		width: 60px;
+		height: 40px;
+		margin-left: 5vw;
+	}
+
 	#addButton{
 		width: 100px;
 		height: 40px;
-		margin-left: 27vw;
+		
+	}
+
+	#clearButton{
+		width: 100px;
+		height: 40px;
 	}
 
 	.mBoxInput{

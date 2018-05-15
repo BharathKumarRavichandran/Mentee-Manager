@@ -1,4 +1,5 @@
 var addButton = document.getElementById("addButton");
+var sortButton = document.getElementById("sortButton");
 var heading = document.getElementById("heading");
 var menteeRegion = document.getElementById("menteeRegion");
 var menteeRegionInput = document.getElementById("menteeRegionInput");
@@ -24,8 +25,8 @@ var edit = false;
 
 if(w>500){
 	heading.style.marginLeft = (w-w/2.5)+"px";//To centre the heading
-	addButton.style.marginLeft = (w-w/12)+"px"; //To centre the element
-	mBoxInputId.style.marginLeft = (w-w/6)+"px"; //To centre the element	
+	sortButton.style.marginLeft = (w-w/5)+"px"; //To centre the element
+	mBoxInputId.style.marginLeft = (w-w/7)+"px"; //To centre the element	
 }
 
 window.onload = function(){
@@ -287,4 +288,9 @@ function deleteBox(y){
 	}
 	count--;
 	localStorage.setItem("count",count);	
+}
+
+function clearData(){
+	localStorage.clear();
+	window.location.reload();
 }

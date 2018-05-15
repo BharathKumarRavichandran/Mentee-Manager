@@ -326,27 +326,39 @@ function sortBoxChecker(t,c){
 
 function sortBox(){
 
-	while(menteeRegion.firstChild) {
+	while(menteeRegion.firstChild) { //To remove the childs of menteeRegion
     	menteeRegion.removeChild(menteeRegion.firstChild);
 	}
 
+	localStorage.getItem("nameSpan"+t)===null
+
 	for(var t=0;t<localStorage.getItem("maxMentee");t++){
-		sortBoxChecker(t,5);		
+		if(localStorage.getItem("nameSpan"+t)!==null){
+			sortBoxChecker(t,5);
+		}		
 	}	
 
 	for(var t=0;t<localStorage.getItem("maxMentee");t++){
-		sortBoxChecker(t,4);		
+		if(localStorage.getItem("nameSpan"+t)!==null){
+			sortBoxChecker(t,4);
+		}				
 	}	
 
 	for(var t=0;t<localStorage.getItem("maxMentee");t++){
-		sortBoxChecker(t,3);		
+		if(localStorage.getItem("nameSpan"+t)!==null){
+			sortBoxChecker(t,3);
+		}				
 	}	
 
 	for(var t=0;t<localStorage.getItem("maxMentee");t++){
-		sortBoxChecker(t,2);		
+		if(localStorage.getItem("nameSpan"+t)!==null){
+			sortBoxChecker(t,2);
+		}				
 	}	
 
 	for(var t=0;t<localStorage.getItem("maxMentee");t++){
-		sortBoxChecker(t,1);		
+		if(localStorage.getItem("nameSpan"+t)!==null){
+			sortBoxChecker(t,1);
+		}				
 	}		
 }

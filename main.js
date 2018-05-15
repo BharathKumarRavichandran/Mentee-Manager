@@ -31,7 +31,12 @@ if(w>500){
 
 window.onload = function(){
 	menteeRegionInput.removeChild(mBoxInputId);
-	initialise();
+	if(localStorage.length==0){
+		i=0;
+	}
+	else{
+		initialise();
+	}
 }
 
 Element.prototype.remove = function() {  //Function written to remove element easily using .remove()
@@ -329,8 +334,6 @@ function sortBox(){
 	while(menteeRegion.firstChild) { //To remove the childs of menteeRegion
     	menteeRegion.removeChild(menteeRegion.firstChild);
 	}
-
-	localStorage.getItem("nameSpan"+t)===null
 
 	for(var t=0;t<localStorage.getItem("maxMentee");t++){
 		if(localStorage.getItem("nameSpan"+t)!==null){

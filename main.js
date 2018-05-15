@@ -131,10 +131,13 @@ function initialise(){
 	
 	for(var t=0;t<i;t++){
 		if(localStorage.getItem("nameSpan"+t)===null){
+			/*console.log("if "+t);
+			console.log("nameSpan"+t);
+			console.log(localStorage.getItem("nameSpan"+t));*/
 			//do nothing
 		}
 		else{
-
+			//console.log("else "+t);
 			j = localStorage.getItem("comments"+t);
 
 			drawBox(t);
@@ -188,16 +191,18 @@ function newMentee(){
 	menteeComment[i][j] = mCommentId.value;
 	menteeRating[i] = rating.value;
 
+	drawBox(i);
+
 	localStorage.setItem("nameSpan"+i,menteeName[i]);
+	console.log(localStorage.getItem("nameSpan"+i));
 	localStorage.setItem("rateSpan"+i,menteeRating[i]);
+	console.log(localStorage.getItem("rateSpan"+i));
 	localStorage.setItem("comment"+i+""+j,menteeComment[i][j]);
 
 	nameId.value="Mentee's Name";
 	mCommentId.value="Write a comment...";
 	rating.value="";
 
-	drawBox(i);
-	
 	document.getElementById("nameSpan"+i).innerHTML = localStorage.getItem("nameSpan"+i);
 	document.getElementById("rateSpan"+i).innerHTML = localStorage.getItem("rateSpan"+i);
 	var newItem = document.createElement("LI");
@@ -293,4 +298,55 @@ function deleteBox(y){
 function clearData(){
 	localStorage.clear();
 	window.location.reload();
+}
+
+function sortBoxChecker(t,c){
+		
+		if(localStorage.getItem("rateSpan"+t)==c){
+
+			j = localStorage.getItem("comments"+t);
+
+			drawBox(t);
+
+			document.getElementById("nameSpan"+t).innerHTML = localStorage.getItem("nameSpan"+t);
+			document.getElementById("rateSpan"+t).innerHTML = localStorage.getItem("rateSpan"+t);
+			
+			for(var r=0;r<j;r++){
+				var newItem = document.createElement("LI");
+				newItem.setAttribute("id","comment"+t+""+r);
+				newItem.setAttribute("class","comment");
+				var textnode = document.createTextNode(localStorage.getItem("comment"+t+""+r));
+				newItem.appendChild(textnode);
+				document.getElementById("listId"+t).appendChild(newItem);
+			}
+			
+			boxColorChecker(t);
+		}
+	}	
+
+function sortBox(){
+
+	while(menteeRegion.firstChild) {
+    	menteeRegion.removeChild(menteeRegion.firstChild);
+	}
+
+	for(var t=0;t<localStorage.getItem("maxMentee");t++){
+		sortBoxChecker(t,5);		
+	}	
+
+	for(var t=0;t<localStorage.getItem("maxMentee");t++){
+		sortBoxChecker(t,4);		
+	}	
+
+	for(var t=0;t<localStorage.getItem("maxMentee");t++){
+		sortBoxChecker(t,3);		
+	}	
+
+	for(var t=0;t<localStorage.getItem("maxMentee");t++){
+		sortBoxChecker(t,2);		
+	}	
+
+	for(var t=0;t<localStorage.getItem("maxMentee");t++){
+		sortBoxChecker(t,1);		
+	}		
 }

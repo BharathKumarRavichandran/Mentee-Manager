@@ -30,6 +30,7 @@ if(w>500){
 
 window.onload = function(){
 	menteeRegionInput.removeChild(mBoxInputId);
+	initialise();
 }
 
 Element.prototype.remove = function() {  //Function written to remove element easily using .remove()
@@ -58,11 +59,11 @@ function submitButton(){
 }
 
 function boxColorChecker(l){
-	if(menteeRating[l]>3&&menteeRating[l]<=5){
+	if(localStorage.getItem("rateSpan"+l)>3&&localStorage.getItem("rateSpan"+l)<=5){
 		document.getElementById("mBoxId"+l).style.backgroundColor = "#01FF70";
 	}
 
-	else if(menteeRating[l]<3){
+	else if(localStorage.getItem("rateSpan"+l)<3){
 		document.getElementById("mBoxId"+l).style.backgroundColor = "#FF4136";	
 	}
 }
@@ -248,4 +249,113 @@ function deleteBox(y){
 	}
 	count--;
 	localStorage.setItem("count",count);	
+}
+
+function draw(){
+
+}
+
+function initialise(){
+
+	i=localStorage.getItem("maxMentee");
+	
+	for(var t=0;t<i;t++){
+		if(localStorage.getItem("nameSpan"+t)===null){
+			//do nothing
+		}
+		else{
+
+			j = localStorage.getItem("comments"+t);
+
+			var div1 = document.createElement("div");
+			var nameSpan = document.createElement("span");
+			var ratingSpan = document.createElement("span");
+			var rateValueSpan = document.createElement("span");
+			var div2 = document.createElement("div");
+			var ul = document.createElement("ul");
+			var input1 = document.createElement("input");
+			var span3 = document.createElement("span");
+			var cb = document.createElement("button");
+			var div3 = document.createElement("div");
+			var span4 = document.createElement("span");
+			var eb = document.createElement("button");
+			var span5 = document.createElement("span");
+			var db = document.createElement("button");
+			
+			var nametxt = document.createTextNode(localStorage.getItem("nameSpan"+t));
+			var rateValue = document.createTextNode(localStorage.getItem("rateSpan"+t));
+			var ratetxt = document.createTextNode(" Rating :");
+			var commtxt = document.createTextNode("Comments :");
+			var cbtxt = document.createTextNode("comment");
+		 	var ebtxt = document.createTextNode("Edit profile");
+		 	var dbtxt = document.createTextNode("Delete profile");
+			nameSpan.appendChild(nametxt);
+			ratingSpan.appendChild(ratetxt);
+			rateValueSpan.appendChild(rateValue);
+			ratingSpan.appendChild(rateValueSpan);
+			div2.appendChild(commtxt);
+			cb.appendChild(cbtxt);
+			eb.appendChild(ebtxt);
+			db.appendChild(dbtxt);
+			div1.appendChild(nameSpan);
+			div1.appendChild(ratingSpan);
+			div1.appendChild(div2);
+			div1.appendChild(ul);
+			div1.appendChild(input1);
+			span3.appendChild(cb);
+			div1.appendChild(span3);
+			span4.appendChild(eb);
+			span5.appendChild(db);
+			div3.appendChild(span4);
+			div3.appendChild(span5);
+			div1.appendChild(div3);
+			document.getElementById("menteeRegion").appendChild(div1);
+
+			div1.setAttribute("id","mBoxId"+t);
+			nameSpan.setAttribute("id","nameSpan"+t);
+			ratingSpan.setAttribute("id","mStar");
+			rateValueSpan.setAttribute("id","rateSpan"+t);
+			div2.setAttribute("id","commentHead");
+			ul.setAttribute("id","listId"+t);
+			input1.setAttribute("id","mcId"+t);
+			cb.setAttribute("id","commentButton"+t);
+			eb.setAttribute("id","editButton"+t);
+			db.setAttribute("id","deleteButton"+t);
+			
+			div1.setAttribute("class","mBox");
+			nameSpan.setAttribute("class","mName");
+			ratingSpan.setAttribute("class","mStarClass");
+			rateValueSpan.setAttribute("class","mstar");
+			div2.setAttribute("class","commentHeadClass");
+			ul.setAttribute("class","list");
+			input1.setAttribute("class","mComment");
+			cb.setAttribute("class","commentButtonClass");
+			div3.setAttribute("class","edButtons");
+			eb.setAttribute("class","editButtonClass");
+			db.setAttribute("class","deleteButtonClass");
+
+			input1.setAttribute("type","text");
+			input1.setAttribute("name","comment");
+			input1.setAttribute("onfocus","this.value='';");
+			input1.setAttribute("value","Write a comment...");
+
+			cb.setAttribute("onclick","newComment(this);");
+			eb.setAttribute("onclick","editBox(this);");
+			db.setAttribute("onclick","deleteBox(this);")
+			
+			document.getElementById("nameSpan"+t).innerHTML = localStorage.getItem("nameSpan"+t);
+			document.getElementById("rateSpan"+t).innerHTML = localStorage.getItem("rateSpan"+t);
+			
+			for(var r=0;r<j;r++){
+				var newItem = document.createElement("LI");
+				newItem.setAttribute("id","comment"+t.toString()+r.toString());
+				newItem.setAttribute("class","comment");
+				var textnode = document.createTextNode(localStorage.getItem("comment"+t.toString()+r.toString()));
+				newItem.appendChild(textnode);
+				document.getElementById("listId"+t).appendChild(newItem);
+			}
+			
+			boxColorChecker(t);
+		}
+	}
 }

@@ -203,7 +203,7 @@ function newMentee(){
 	var newItem = document.createElement("LI");
 	newItem.setAttribute("id","comment"+i.toString()+j.toString());
 	newItem.setAttribute("class","comment");
-	var textnode = document.createTextNode(menteeComment[i][j]);
+	var textnode = document.createTextNode(localStorage.getItem("comment"+i.toString()+j.toString()));
 	newItem.appendChild(textnode);
 	document.getElementById("listId"+i).appendChild(newItem);
 
@@ -229,7 +229,7 @@ function newComment(y){
 	newItem.setAttribute("class","comment");
 	localStorage.setItem("comment"+k.toString()+j.toString(),menteeComment[k][j]);
 	localStorage.setItem("comments"+k,j);
-	var textnode = document.createTextNode(menteeComment[k][j]);
+	var textnode = document.createTextNode(localStorage.getItem("comment"+k.toString()+j.toString()));
 	newItem.appendChild(textnode);
 	document.getElementById(listIdnew).appendChild(newItem);
 	document.getElementById(mcIdnew).value="Write a comment...";
@@ -249,12 +249,12 @@ function editBoxSubmit(){
 	var rateSpannew = "rateSpan"+k;
 	localStorage.setItem("nameSpan"+k,menteeName[k]);
 	localStorage.setItem("rateSpan"+k,menteeRating[k]);
-	document.getElementById(nameSpannew).innerHTML = nameId.value;
-	document.getElementById(rateSpannew).innerHTML = rating.value;
+	document.getElementById(nameSpannew).innerHTML = localStorage.getItem("nameSpan"+k);
+	document.getElementById(rateSpannew).innerHTML = localStorage.getItem("rateSpan"+k);
 	boxColorChecker(k);
 	var commentAdd = mCommentId.value;
 	if(commentAdd!="" || commentAdd!="Write a comment..."){
-		menteeComment[k][j] = commentAdd;
+		menteeComment[k][j] = mCommentId.value;
 		localStorage.setItem("comment"+k.toString()+j.toString(),menteeComment[k][j]);
 		var mcIdnew = "mcId"+k;
 		var listIdnew = "listId"+k;
@@ -262,7 +262,7 @@ function editBoxSubmit(){
 		var newItem = document.createElement("LI");
 		newItem.setAttribute("id","comment"+k.toString()+j.toString());
 		newItem.setAttribute("class","comment");
-		var textnode = document.createTextNode(menteeComment[k][j]);
+		var textnode = document.createTextNode(localStorage.getItem("comment"+k.toString()+j.toString()));
 		newItem.appendChild(textnode);
 		document.getElementById(listIdnew).appendChild(newItem);
 		j++;

@@ -63,77 +63,120 @@ function drawBox(u){
 			var nameSpan = document.createElement("span");
 			var ratingSpan = document.createElement("span");
 			var rateValueSpan = document.createElement("span");
-			var div2 = document.createElement("div");
-			var ul = document.createElement("ul");
-			var input1 = document.createElement("input");
-			var span3 = document.createElement("span");
-			var cb = document.createElement("button");
-			var div3 = document.createElement("div");
-			var span4 = document.createElement("span");
-			var eb = document.createElement("button");
-			var span5 = document.createElement("span");
-			var db = document.createElement("button");
-			
+					
 			var nametxt = document.createTextNode(localStorage.getItem("nameSpan"+u));
 			var rateValue = document.createTextNode(localStorage.getItem("rateSpan"+u));
-			var ratetxt = document.createTextNode(" Rating :");
-			var commtxt = document.createTextNode("Comments :");
-			var cbtxt = document.createTextNode("comment");
-		 	var ebtxt = document.createTextNode("Edit profile");
-		 	var dbtxt = document.createTextNode("Delete profile");
+			var ratetxt = document.createTextNode(" Rating :");			
+			
 			nameSpan.appendChild(nametxt);
 			ratingSpan.appendChild(ratetxt);
 			rateValueSpan.appendChild(rateValue);
 			ratingSpan.appendChild(rateValueSpan);
-			div2.appendChild(commtxt);
-			cb.appendChild(cbtxt);
-			eb.appendChild(ebtxt);
-			db.appendChild(dbtxt);
 			div1.appendChild(nameSpan);
 			div1.appendChild(ratingSpan);
-			div1.appendChild(div2);
-			div1.appendChild(ul);
-			div1.appendChild(input1);
-			span3.appendChild(cb);
-			div1.appendChild(span3);
-			span4.appendChild(eb);
-			span5.appendChild(db);
-			div3.appendChild(span4);
-			div3.appendChild(span5);
-			div1.appendChild(div3);
 			document.getElementById("menteeRegion").appendChild(div1);
 
 			div1.setAttribute("id","mBoxId"+u);
 			nameSpan.setAttribute("id","nameSpan"+u);
 			ratingSpan.setAttribute("id","mStar");
 			rateValueSpan.setAttribute("id","rateSpan"+u);
-			div2.setAttribute("id","commentHead");
-			ul.setAttribute("id","listId"+u);
-			input1.setAttribute("id","mcId"+u);
-			cb.setAttribute("id","commentButton"+u);
-			eb.setAttribute("id","editButton"+u);
-			db.setAttribute("id","deleteButton"+u);
-			
 			div1.setAttribute("class","mBox");
 			nameSpan.setAttribute("class","mName");
 			ratingSpan.setAttribute("class","mStarClass");
 			rateValueSpan.setAttribute("class","mstar");
-			div2.setAttribute("class","commentHeadClass");
-			ul.setAttribute("class","list");
-			input1.setAttribute("class","mComment");
-			cb.setAttribute("class","commentButtonClass");
-			div3.setAttribute("class","edButtons");
-			eb.setAttribute("class","editButtonClass");
-			db.setAttribute("class","deleteButtonClass");
 
-			input1.setAttribute("type","text");
-			input1.setAttribute("name","comment");
-			input1.setAttribute("onfocus","this.value='';");
-			input1.setAttribute("value","Write a comment...");
+			div1.setAttribute("onclick","clickBox(this,event);");
 
-			cb.setAttribute("onclick","newComment(this);");
-			eb.setAttribute("onclick","editBox(this);");
-			db.setAttribute("onclick","deleteBox(this);")
+			localStorage.setItem("boxStatus"+u,"closed");
+
+
+}
+
+function openBoxChecker(){
+	for(var k=0;k<localStorage.getItem("maxMentee");k++){
+		if(localStorage.getItem("nameSpan"+k)!=null){
+			if(localStorage.getItem("boxStatus"+k)=="open"){
+				document.getElementById("commentHead"+k).remove();
+				document.getElementById("listId"+k).remove();
+				document.getElementById("mcId"+k).remove();
+				document.getElementById("commentButton"+k).parentElement.remove();
+				document.getElementById("editButton"+k).remove();
+				document.getElementById("deleteButton"+k).remove();
+				localStorage.setItem("boxStatus"+k,"closed");
+			}
+		}
+	}
+}
+
+function clickBox(y,event){
+
+			var k = y.id[6];
+			if(event.target.id==y.id){
+				openBoxChecker();
+				localStorage.setItem("boxStatus"+k,"open");
+				var div1 = document.getElementById("mBoxId"+k);
+				var div2 = document.createElement("div");
+				var ul = document.createElement("ul");
+				var input1 = document.createElement("input");
+				var span3 = document.createElement("span");
+				var cb = document.createElement("button");
+				var div3 = document.createElement("div");
+				var span4 = document.createElement("span");
+				var eb = document.createElement("button");
+				var span5 = document.createElement("span");
+				var db = document.createElement("button");
+				var commtxt = document.createTextNode("Comments :");
+				var cbtxt = document.createTextNode("comment");
+			 	var ebtxt = document.createTextNode("Edit profile");
+			 	var dbtxt = document.createTextNode("Delete profile");			
+				div2.appendChild(commtxt);
+				cb.appendChild(cbtxt);
+				eb.appendChild(ebtxt);
+				db.appendChild(dbtxt);			
+				div1.appendChild(div2);
+				div1.appendChild(ul);
+				div1.appendChild(input1);
+				span3.appendChild(cb);
+				div1.appendChild(span3);
+				span4.appendChild(eb);
+				span5.appendChild(db);
+				div3.appendChild(span4);
+				div3.appendChild(span5);
+				div1.appendChild(div3);
+				div2.setAttribute("id","commentHead"+k);
+				ul.setAttribute("id","listId"+k);
+				input1.setAttribute("id","mcId"+k);
+				cb.setAttribute("id","commentButton"+k);
+				eb.setAttribute("id","editButton"+k);
+				db.setAttribute("id","deleteButton"+k);	
+				div2.setAttribute("class","commentHeadClass");
+				ul.setAttribute("class","list");
+				input1.setAttribute("class","mComment");
+				cb.setAttribute("class","commentButtonClass");
+				div3.setAttribute("class","edButtons");
+				eb.setAttribute("class","editButtonClass");
+				db.setAttribute("class","deleteButtonClass");
+
+				input1.setAttribute("type","text");
+				input1.setAttribute("name","comment");
+				input1.setAttribute("onfocus","this.value='';");
+				input1.setAttribute("value","Write a comment...");
+
+				cb.setAttribute("onclick","newComment(this);");
+				eb.setAttribute("onclick","editBox(this);");
+				db.setAttribute("onclick","deleteBox(this);");
+
+				j = localStorage.getItem("comments"+k);
+
+				for(var r=0;r<j;r++){
+					var newItem = document.createElement("LI");
+					newItem.setAttribute("id","comment"+k+""+r);
+					newItem.setAttribute("class","comment");
+					var textnode = document.createTextNode(localStorage.getItem("comment"+k+""+r));
+					newItem.appendChild(textnode);
+					document.getElementById("listId"+k).appendChild(newItem);
+				}
+			}	
 
 }
 
@@ -153,15 +196,6 @@ function initialise(){
 
 			document.getElementById("nameSpan"+t).innerHTML = localStorage.getItem("nameSpan"+t);
 			document.getElementById("rateSpan"+t).innerHTML = localStorage.getItem("rateSpan"+t);
-			
-			for(var r=0;r<j;r++){
-				var newItem = document.createElement("LI");
-				newItem.setAttribute("id","comment"+t+""+r);
-				newItem.setAttribute("class","comment");
-				var textnode = document.createTextNode(localStorage.getItem("comment"+t+""+r));
-				newItem.appendChild(textnode);
-				document.getElementById("listId"+t).appendChild(newItem);
-			}
 			
 			boxColorChecker(t);
 		}
@@ -212,12 +246,6 @@ function newMentee(){
 
 	document.getElementById("nameSpan"+i).innerHTML = localStorage.getItem("nameSpan"+i);
 	document.getElementById("rateSpan"+i).innerHTML = localStorage.getItem("rateSpan"+i);
-	var newItem = document.createElement("LI");
-	newItem.setAttribute("id","comment"+i+""+j);
-	newItem.setAttribute("class","comment");
-	var textnode = document.createTextNode(localStorage.getItem("comment"+i+""+j));
-	newItem.appendChild(textnode);
-	document.getElementById("listId"+i).appendChild(newItem);
 
 	boxColorChecker(i);
 
@@ -320,15 +348,6 @@ function sortBoxChecker(t,c){
 
 			document.getElementById("nameSpan"+t).innerHTML = localStorage.getItem("nameSpan"+t);
 			document.getElementById("rateSpan"+t).innerHTML = localStorage.getItem("rateSpan"+t);
-			
-			for(var r=0;r<j;r++){
-				var newItem = document.createElement("LI");
-				newItem.setAttribute("id","comment"+t+""+r);
-				newItem.setAttribute("class","comment");
-				var textnode = document.createTextNode(localStorage.getItem("comment"+t+""+r));
-				newItem.appendChild(textnode);
-				document.getElementById("listId"+t).appendChild(newItem);
-			}
 			
 			boxColorChecker(t);
 		}

@@ -33,6 +33,7 @@ window.onload = function(){
 	menteeRegionInput.removeChild(mBoxInputId);
 	if(localStorage.length==0){
 		i=0;
+		j=0;
 	}
 	else{
 		initialise();
@@ -197,7 +198,6 @@ function newMentee(){
 	localStorage.setItem("nameSpan"+i,menteeName[i]);
 	localStorage.setItem("rateSpan"+i,menteeRating[i]);
 	localStorage.setItem("comment"+i+""+j,menteeComment[i][j]);
-	localStorage.setItem("comments"+i,j);
 
 	nameId.value="Mentee's Name";
 	mCommentId.value="Write a comment...";
@@ -214,18 +214,19 @@ function newMentee(){
 
 	boxColorChecker(i);
 
+	j++;
+	localStorage.setItem("comments"+i,j);	
 	i++;
 	count++;
-	j++;
 	localStorage.setItem("maxMentee",i);
 	localStorage.setItem("count",count);
-	localStorage.setItem("comments"+i,j);
 
 	document.getElementById("mBoxInputId").remove();
 }
 
 function newComment(y){
 	var k = y.id[13];
+	j = localStorage.getItem("comments"+k);
 	var mcIdnew = "mcId"+k;
 	var listIdnew = "listId"+k;
 	menteeComment[k][j] = document.getElementById(mcIdnew).value;
@@ -233,12 +234,12 @@ function newComment(y){
 	newItem.setAttribute("id","comment"+k+""+j);
 	newItem.setAttribute("class","comment");
 	localStorage.setItem("comment"+k+""+j,menteeComment[k][j]);
-	localStorage.setItem("comments"+k,j);
 	var textnode = document.createTextNode(localStorage.getItem("comment"+k+""+j));
 	newItem.appendChild(textnode);
 	document.getElementById(listIdnew).appendChild(newItem);
 	document.getElementById(mcIdnew).value="Write a comment...";
 	j++;
+	localStorage.setItem("comments"+k,j);
 }
 
 function editBox(y){
@@ -248,6 +249,7 @@ function editBox(y){
 }
 
 function editBoxSubmit(){
+	j = localStorage.getItem("comments"+k);
 	menteeName[k] = nameId.value;
 	menteeRating[k] = rating.value;
 	var nameSpannew = "nameSpan"+k;
@@ -271,6 +273,7 @@ function editBoxSubmit(){
 		newItem.appendChild(textnode);
 		document.getElementById(listIdnew).appendChild(newItem);
 		j++;
+		localStorage.setItem("comments"+k,j);
 	}	
 	edit=false;
 	nameId.value="Mentee's Name";
@@ -289,7 +292,7 @@ function deleteBox(y){
 	localStorage.removeItem("rateSpan"+k);
 	localStorage.removeItem("comments"+k);
 	for(;j>=0;j--){
-		localStorage.removeItem("comment"+k+""+j,menteeComment[k][j]);
+		localStorage.removeItem("comment"+k+""+j);
 	}
 	count--;
 	localStorage.setItem("count",count);	
@@ -305,6 +308,7 @@ function sortBoxChecker(t,c){
 		if(localStorage.getItem("rateSpan"+t)==c){
 
 			j = localStorage.getItem("comments"+t);
+			console.log(j);
 
 			drawBox(t);
 
@@ -312,6 +316,8 @@ function sortBoxChecker(t,c){
 			document.getElementById("rateSpan"+t).innerHTML = localStorage.getItem("rateSpan"+t);
 			
 			for(var r=0;r<j;r++){
+				console.log("Hello"+t+" "+r);
+				console.log(localStorage.getItem("comment"+t+""+r));
 				var newItem = document.createElement("LI");
 				newItem.setAttribute("id","comment"+t+""+r);
 				newItem.setAttribute("class","comment");

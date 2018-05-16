@@ -36,6 +36,12 @@ window.onload = function(){
 		j=0;
 	}
 	else{
+		var mentee = new Array();
+		var menteeName = new Array(); //Array which contains the name of mentees
+		var menteeComment = new Array(); //Array which contains the comment on each mentees
+		var menteeRating = new Array(); //Array which contains the rating oon each mentee
+		var count = 0;//No. of mentee's
+		var edit = false;
 		initialise();
 	}
 }
@@ -140,6 +146,7 @@ function initialise(){
 			//do nothing
 		}
 		else{
+			menteeComment[t] = new Array();
 			j = localStorage.getItem("comments"+t);
 
 			drawBox(t);
@@ -308,7 +315,6 @@ function sortBoxChecker(t,c){
 		if(localStorage.getItem("rateSpan"+t)==c){
 
 			j = localStorage.getItem("comments"+t);
-			console.log(j);
 
 			drawBox(t);
 
@@ -316,8 +322,6 @@ function sortBoxChecker(t,c){
 			document.getElementById("rateSpan"+t).innerHTML = localStorage.getItem("rateSpan"+t);
 			
 			for(var r=0;r<j;r++){
-				console.log("Hello"+t+" "+r);
-				console.log(localStorage.getItem("comment"+t+""+r));
 				var newItem = document.createElement("LI");
 				newItem.setAttribute("id","comment"+t+""+r);
 				newItem.setAttribute("class","comment");

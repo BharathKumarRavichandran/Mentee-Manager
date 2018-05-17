@@ -160,7 +160,7 @@ function clickBox(y,event){
 				input1.setAttribute("type","text");
 				input1.setAttribute("name","comment");
 				input1.setAttribute("onfocus","this.value='';");
-				input1.setAttribute("value","Write a comment...");
+				input1.setAttribute("placeholder","Write a comment...");
 
 				cb.setAttribute("onclick","newComment(this);");
 				eb.setAttribute("onclick","editBox(this);");
@@ -240,9 +240,12 @@ function newMentee(){
 	localStorage.setItem("rateSpan"+i,menteeRating[i]);
 	localStorage.setItem("comment"+i+""+j,menteeComment[i][j]);
 
-	nameId.value="Mentee's Name";
-	mCommentId.value="Write a comment...";
+	nameId.value="";
+	nameId.placeholder="Mentee's Name";
+	mCommentId.value="";
+	mCommentId.placeholder="Write a comment...";
 	rating.value="";
+	rating.placeholder="1-5";
 
 	document.getElementById("nameSpan"+i).innerHTML = localStorage.getItem("nameSpan"+i);
 	document.getElementById("rateSpan"+i).innerHTML = localStorage.getItem("rateSpan"+i);
@@ -272,7 +275,8 @@ function newComment(y){
 	var textnode = document.createTextNode(localStorage.getItem("comment"+k+""+j));
 	newItem.appendChild(textnode);
 	document.getElementById(listIdnew).appendChild(newItem);
-	document.getElementById(mcIdnew).value="Write a comment...";
+	document.getElementById(mcIdnew).value="";
+	document.getElementById(mcIdnew).placeholder="Write a comment...";
 	j++;
 	localStorage.setItem("comments"+k,j);
 }
@@ -311,9 +315,12 @@ function editBoxSubmit(){
 		localStorage.setItem("comments"+k,j);
 	}	
 	edit=false;
-	nameId.value="Mentee's Name";
-	mCommentId.value="Write a comment...";
+	nameId.value="";
+	nameId.placeholder="Mentee's Name";
+	mCommentId.value="";
+	mCommentId.placeholder="Write a comment...";
 	rating.value="";
+	rating.placeholder="1-5";
 	k=-1;
 	document.getElementById("mBoxInputId").remove();
 }

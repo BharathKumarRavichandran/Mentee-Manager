@@ -110,7 +110,10 @@ function openBoxChecker(){
 
 function clickBox(y,event){
 
-			var k = y.id[6];
+			var idAttr = y.getAttribute("id");
+		    var res = idAttr.split("mBoxId");
+		    var k = parseInt(res[1]);
+
 			if(event.target.id==y.id){
 				openBoxChecker();
 				localStorage.setItem("boxStatus"+k,"open");
@@ -263,7 +266,11 @@ function newMentee(){
 }
 
 function newComment(y){
-	var k = y.id[13];
+
+	var idAttr = y.getAttribute("id");
+    var res = idAttr.split("commentButton");
+    var k = parseInt(res[1]);
+
 	j = localStorage.getItem("comments"+k);
 	var mcIdnew = "mcId"+k;
 	var listIdnew = "listId"+k;
@@ -282,7 +289,11 @@ function newComment(y){
 }
 
 function editBox(y){
-	k = y.id[10];//To get the mentee number
+
+	var idAttr = y.getAttribute("id");
+    var res = idAttr.split("editButton");
+    k = parseInt(res[1]);//To get the mentee number
+
 	edit=true;
 	menteeRegionInput.appendChild(mBoxInputId);
 }
@@ -290,16 +301,20 @@ function editBox(y){
 function editBoxSubmit(){
 	j = localStorage.getItem("comments"+k);
 	menteeName[k] = nameId.value;
-	menteeRating[k] = rating.value;
+	if(rating.value!=""){
+		menteeRating[k] = rating.value;
+		document.getElementById(rateSpannew).innerHTML = localStorage.getItem("rateSpan"+k);
+		localStorage.setItem("rateSpan"+k,menteeRating[k]);
+	}
 	var nameSpannew = "nameSpan"+k;
 	var rateSpannew = "rateSpan"+k;
 	localStorage.setItem("nameSpan"+k,menteeName[k]);
-	localStorage.setItem("rateSpan"+k,menteeRating[k]);
+	
 	document.getElementById(nameSpannew).innerHTML = localStorage.getItem("nameSpan"+k);
-	document.getElementById(rateSpannew).innerHTML = localStorage.getItem("rateSpan"+k);
+	
 	boxColorChecker(k);
 	var commentAdd = mCommentId.value;
-	if(commentAdd!="" || commentAdd!="Write a comment..."){
+	if(commentAdd!="" && commentAdd!="Write a comment..."){
 		menteeComment[k][j] = mCommentId.value;
 		localStorage.setItem("comment"+k+""+j,menteeComment[k][j]);
 		var mcIdnew = "mcId"+k;
@@ -326,7 +341,11 @@ function editBoxSubmit(){
 }
 
 function deleteBox(y){
-	var k = y.id[12];//To get the mentee number
+
+	var idAttr = y.getAttribute("id");
+    var res = idAttr.split("deleteButton");
+    var k = parseInt(res[1]);//To get the mentee number
+
 	var mBoxIdnew = "mBoxId"+k;
 	var x = document.getElementById(mBoxIdnew);
 	x.remove();

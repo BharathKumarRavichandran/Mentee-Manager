@@ -267,25 +267,30 @@ function newMentee(){
 
 function newComment(y){
 
-	var idAttr = y.getAttribute("id");
-    var res = idAttr.split("commentButton");
-    var k = parseInt(res[1]);
+		var idAttr = y.getAttribute("id");
+	    var res = idAttr.split("commentButton");
+	    var k = parseInt(res[1]);
 
-	j = localStorage.getItem("comments"+k);
-	var mcIdnew = "mcId"+k;
-	var listIdnew = "listId"+k;
-	menteeComment[k][j] = document.getElementById(mcIdnew).value;
-	var newItem = document.createElement("LI");
-	newItem.setAttribute("id","comment"+k+""+j);
-	newItem.setAttribute("class","comment");
-	localStorage.setItem("comment"+k+""+j,menteeComment[k][j]);
-	var textnode = document.createTextNode(localStorage.getItem("comment"+k+""+j));
-	newItem.appendChild(textnode);
-	document.getElementById(listIdnew).appendChild(newItem);
-	document.getElementById(mcIdnew).value="";
-	document.getElementById(mcIdnew).placeholder="Write a comment...";
-	j++;
-	localStorage.setItem("comments"+k,j);
+	if(document.getElementById("mcId"+k).value!=""){
+
+		j = localStorage.getItem("comments"+k);
+		var mcIdnew = "mcId"+k;
+		var listIdnew = "listId"+k;
+		menteeComment[k][j] = document.getElementById(mcIdnew).value;
+		var newItem = document.createElement("LI");
+		newItem.setAttribute("id","comment"+k+""+j);
+		newItem.setAttribute("class","comment");
+		localStorage.setItem("comment"+k+""+j,menteeComment[k][j]);
+		var textnode = document.createTextNode(localStorage.getItem("comment"+k+""+j));
+		newItem.appendChild(textnode);
+		document.getElementById(listIdnew).appendChild(newItem);
+		document.getElementById(mcIdnew).value="";
+		document.getElementById(mcIdnew).placeholder="Write a comment...";
+		j++;
+		localStorage.setItem("comments"+k,j);
+		
+	}
+	
 }
 
 function editBox(y){
